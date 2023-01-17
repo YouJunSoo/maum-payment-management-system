@@ -1,0 +1,86 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.7'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'maum'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	/* starter */
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	/* MongoDB */
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.7.5'
+
+	/* lombok */
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	/* Common Util */
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+
+	/* JPA */
+	implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+	implementation group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.11.RELEASE'
+
+	/* JSON */
+	implementation group: 'org.json', name: 'json', version: '20160810'
+
+	/* CommonsIO */
+	implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+
+	/* ContentType */
+	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
+
+	/* JWT */
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+
+	/* Swagger */
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.11'
+
+
+	/* Slack */
+	implementation("com.slack.api:bolt:1.18.0")
+	implementation("com.slack.api:bolt-servlet:1.18.0")
+	implementation("com.slack.api:bolt-jetty:1.18.0")
+
+	/* logback */
+	implementation group: 'ch.qos.logback', name: 'logback-classic'
+
+	/* JACKSON */
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.14.0-rc2'
+
+	/* SESSION */
+	implementation 'org.springframework.session:spring-session-data-mongodb'
+
+	/* EXCEL */
+	implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.0.0'
+
+	/* Import */
+	implementation 'com.github.iamport:iamport-rest-client-java:0.2.21'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
